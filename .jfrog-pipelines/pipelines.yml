@@ -12,6 +12,9 @@ resources:
     type: BuildInfo
     configuration:
       sourceArtifactory: {{ .Values.artifactory }}
+      buildName: $res_mvn_build_info_buildName
+      buildNumber: $res_mvn_build_info_buildNumber
+
 
 pipelines:
   - name: demo_maven
@@ -20,7 +23,6 @@ pipelines:
         type: MvnBuild
         configuration:
           mvnCommand: clean install -DskipTests -DskipITs
-          autoPublishBuildInfo: true
           deployerSnapshotRepo: {{ .Values.deployerSSRepo }}
           deployerReleaseRepo: {{ .Values.deployerRelRepo }}
           inputResources:
@@ -32,6 +34,7 @@ pipelines:
         type: PublishBuildInfo
         configuration:
           forceXrayScan: true
+          autoPublishBuildInfo: true
           inputSteps:
             - name: mvn_build_step
           outputResources:
