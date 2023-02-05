@@ -1,0 +1,5 @@
+gitProvider: VA_GHE
+artifactory: VA_DEV_ARTI
+repoPath: MuraliKrishnaAdiraju/jmeter-maven-plugin
+deployerSSRepo: sbo-cicd-maven-dev-local
+deployerRelRepo: sbo-cicd-maven-release-local
