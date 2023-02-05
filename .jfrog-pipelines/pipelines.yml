@@ -20,6 +20,7 @@ pipelines:
         type: MvnBuild
         configuration:
           mvnCommand: clean install -DskipTests -DskipITs
+          autoPublishBuildInfo: true 
           deployerSnapshotRepo: {{ .Values.deployerSSRepo }}
           deployerReleaseRepo: {{ .Values.deployerRelRepo }}
           inputResources:
@@ -30,7 +31,8 @@ pipelines:
       - name: publish_build
         type: PublishBuildInfo
         configuration:
-          forceXrayScan: false
+          forceXrayScan: true
+          autoPublishBuildInfo: true
           inputSteps:
             - name: mvn_build_step
           outputResources:
