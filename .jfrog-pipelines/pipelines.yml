@@ -20,7 +20,6 @@ pipelines:
         type: MvnBuild
         configuration:
           mvnCommand: clean install -DskipTests -DskipITs
-          autoPublishBuildInfo: true 
           deployerSnapshotRepo: {{ .Values.deployerSSRepo }}
           deployerReleaseRepo: {{ .Values.deployerRelRepo }}
           inputResources:
